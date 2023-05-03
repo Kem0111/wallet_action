@@ -1,0 +1,14 @@
+*.egg-info
+__pycache__
+dist/
+*.pyc
+.venv/
+.coverage
+coverage.xml
+.pytest_cache/
+.vim
+.DS_Store
+htmlcov
+.env
+migration/*
+!migration/__init__.py
