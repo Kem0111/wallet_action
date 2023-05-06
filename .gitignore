@@ -12,3 +12,4 @@ htmlcov
 .env
 migration/*
 !migration/__init__.py
+adress.txt
