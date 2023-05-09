@@ -1,11 +1,15 @@
 import logging
 from aiogram import Bot, Dispatcher
 from aiogram.contrib.middlewares.logging import LoggingMiddleware
+from aiogram.contrib.fsm_storage.memory import MemoryStorage
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
-API_TOKEN = "6148435016:AAFsRNgFZZBg26lRjnkOltGzs2BD_o--szU"
+API_TOKEN = os.getenv("API_TOKEN")
 
 bot = Bot(token=API_TOKEN)
-dp = Dispatcher(bot)
+dp = Dispatcher(bot, storage=MemoryStorage())
 dp.middleware.setup(LoggingMiddleware())

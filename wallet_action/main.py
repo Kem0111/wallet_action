@@ -1,4 +1,4 @@
-from wallet_action.create_bot import dp
+from wallet_action.settings import dp
 from aiogram.utils import executor
 from wallet_action.models import init_db
 import asyncio

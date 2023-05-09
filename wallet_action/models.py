@@ -1,6 +1,10 @@
 from tortoise import Tortoise, fields
+from dotenv import load_dotenv
+import os
 from tortoise.models import Model
 from datetime import datetime, timedelta
+
+load_dotenv()
 
 
 class User(Model):
@@ -21,7 +25,7 @@ class Wallet(Model):
 
 async def init_db():
     await Tortoise.init(
-        db_url='postgres://kem:Vmf152@localhost/telegrammbot',
+        db_url=os.getenv("DB_URL"),
         modules={'models': ['wallet_action.models']}
     )
     await Tortoise.generate_schemas()

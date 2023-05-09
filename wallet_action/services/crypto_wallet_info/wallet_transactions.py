@@ -1,4 +1,4 @@
-from wallet_action.crypto_wallet_info.common import WalletManager
+from wallet_action.services.crypto_wallet_info.common import WalletManager
 import datetime
 
 
@@ -23,16 +23,6 @@ class TokenTransactions(WalletManager):
         self.count = count
         self.min_token_amount = min_token_amount
 
-    async def get_url(self):
-        """
-        Returns the URL for fetching token transactions of the wallet address.
-        """
-        return (
-            f"https://api.etherscan.io/api?module=account&"
-            f"action=tokentx&address={self.address}&startblock=0&"
-            f"endblock=99999999&sort=asc&apikey={self._ETHERSCAN_API_KEY}"
-        )
-
     async def get_transactions(self):
         """
         Fetches token transactions from the Etherscan API and filters
@@ -41,10 +31,13 @@ class TokenTransactions(WalletManager):
         # Fetch data from the Etherscan API
         data = await self.request()
 
+        if not data:
+            return False
         # Filter transactions based on the minimum token amount
         transactions = [
             tx for tx in data["result"]
-            if tx["to"].lower() == self.address.lower() and
+            if tx["to"].lower() == self.address.lower() or
+            tx["from"].lower() == self.address.lower() and
             int(tx["value"]) / (
                 self._DECIMAL_BASE ** int(tx["tokenDecimal"])
             ) >= self.min_token_amount

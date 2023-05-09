@@ -1,6 +1,10 @@
 import aiohttp
 import json
 from typing import Optional
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 
 class WalletManager:
@@ -10,7 +14,7 @@ class WalletManager:
     It handles requests to the Etherscan API for fetching transaction data.
     """
 
-    _ETHERSCAN_API_KEY = "YGFEJ9PR36IKH4EDHK3FDTC8E2RT3XEX54"
+    _ETHERSCAN_API_KEY = os.getenv("ETHERSCAN_API_KEY")
     _DECIMAL_BASE = 10
 
     def __init__(self, address: str) -> None:
@@ -18,6 +22,18 @@ class WalletManager:
         Initialize the WalletManager with an Ethereum wallet address.
         """
         self.address = address
+
+    async def get_url(self, page: int = 1, offset: int = 10000):
+        """
+        Returns the URL for fetching token transactions or
+        balance of the wallet address.
+        """
+        return (
+            f"https://api.etherscan.io/api?module=account&"
+            f"action=tokentx&address={self.address}&startblock=0&"
+            f"endblock=99999999&sort=desc&apikey={self._ETHERSCAN_API_KEY}"
+            f"&page={page}&offset={offset}"
+        )
 
     async def request(self) -> Optional[dict]:
         """
@@ -31,17 +47,16 @@ class WalletManager:
 
                 async with session.get(url) as response:
                     if response.status != 200:
-                        return "An error occurred, please try again later"
+                        return False
 
                     data = await response.text()
-        except aiohttp.ClientError as e:
-            print(f"Request error: {e}")
-            return None
+        except aiohttp.ClientError:
+            return False
 
         try:
             # Load JSON data from the response text
             data = json.loads(data)
         except json.JSONDecodeError:
-            return "An error occurred, please try again later"
+            return False
 
         return data

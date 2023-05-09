@@ -1,4 +1,4 @@
-from wallet_action.crypto_wallet_info.common import WalletManager
+from wallet_action.services.crypto_wallet_info.common import WalletManager
 
 
 class WalletTokens(WalletManager):
@@ -9,16 +9,6 @@ class WalletTokens(WalletManager):
     method specific to token transactions.
     """
 
-    async def get_url(self):
-        """
-        Returns the URL for fetching token transactions of the wallet address.
-        """
-        return (
-            f"https://api.etherscan.io/api?module=account&"
-            f"action=tokentx&address={self.address}&startblock=0&"
-            f"endblock=99999999&sort=asc&apikey={self._ETHERSCAN_API_KEY}"
-        )
-
     async def get_tokens(self):
         """
         Returns the token balances of the wallet address
@@ -27,6 +17,9 @@ class WalletTokens(WalletManager):
 
         # Fetch the transaction data from Etherscan API
         data = await self.request()
+
+        if not data:
+            return False
 
         # Initialize an empty dictionary to store token balances
         token_balances = {}
