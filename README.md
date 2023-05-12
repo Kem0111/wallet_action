@@ -1,4 +1,4 @@
-<a href="https://codeclimate.com/github/Kem0111/wallet_action/maintainability"><img src="https://api.codeclimate.com/v1/badges/3e8de494c6b9c185a482/maintainability" /></a>[![Deployed on AWS](https://img.shields.io/badge/Deployed%20on-AWS-orange)]
+<a href="https://codeclimate.com/github/Kem0111/wallet_action/maintainability"><img src="https://api.codeclimate.com/v1/badges/3e8de494c6b9c185a482/maintainability" /></a> ![Deployed on AWS](https://img.shields.io/badge/Deployed%20on-AWS-orange)
 
 Give it a shot  - you'll like it  
 walletchekingbot - https://t.me/walletchekingbot
