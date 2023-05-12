@@ -29,3 +29,4 @@ The bot interacts with users via the Telegram interface and stores user data, in
 | Postgres           | Relational database system                                |
 | aiofiles           | Asynchronous file handling for Python                     |
 | asyncpg            | Asynchronous PostgreSQL client for Python                 |
+| aiohttp            | Asynchronous HTTP client/server framework                 |

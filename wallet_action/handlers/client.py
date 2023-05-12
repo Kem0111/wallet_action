@@ -7,7 +7,7 @@ from wallet_action.validator import is_valid_ethereum_address
 from wallet_action.models import User, Wallet
 from wallet_action.wallet_manager import (get_transactions,
                                           get_balance)
-from wallet_action.statse import TransactionParams
+from wallet_action.states import TransactionParams
 from aiogram.dispatcher import FSMContext
 
 
