@@ -3,6 +3,8 @@ from dotenv import load_dotenv
 import os
 from tortoise.models import Model
 from datetime import datetime, timedelta
+import logging
+
 
 load_dotenv()
 
@@ -24,6 +26,7 @@ class Wallet(Model):
 
 
 async def init_db():
+    logging.info("Initializing DB")
     await Tortoise.init(
         db_url=os.getenv("DB_URL"),
         modules={'models': ['wallet_action.models']}

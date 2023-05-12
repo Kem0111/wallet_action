@@ -8,9 +8,10 @@ def start_bot():
     """
     Start the bot and run it in polling mode.
     """
-    from handlers import client
+    from handlers import client, admin
 
     client.register_handlers_client(dp)
+    admin.register_handlers_admin(dp)
     executor.start_polling(dp, skip_updates=True)
 
 
