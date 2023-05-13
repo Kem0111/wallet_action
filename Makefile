@@ -4,5 +4,8 @@ install:
 test:
 	poetry run pytest
 
-make start:
+start:
 	poetry run python3 wallet_action/main.py
+
+lint:
+	poetry run flake8 wallet_action
