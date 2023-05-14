@@ -3,9 +3,12 @@
 Give it a shot  - you'll like it  
 walletchekingbot - https://t.me/walletchekingbot
 
+### Video example of use  
+
+[![Alt text](https://img.youtube.com/vi/VIDEO_ID)](https://www.youtube.com/watch?v=9HpTul2goMU)
 # Wallet Tracker Bot
 
-Wallet Tracker Bot is a helpful and user-friendly Telegram bot designed to assist users in managing and monitoring their Ethereum wallets. Although currently tailored for the Russian market, an English version will be released soon.  
+Wallet Tracker Bot is a helpful and user-friendly Telegram bot designed to assist users in managing and monitoring Ethereum wallets. Although currently tailored for the Russian market, an English version will be released soon.  
 
 ### Features
 
