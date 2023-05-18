@@ -1,4 +1,5 @@
-from wallet_action.services.crypto_wallet_info.common import WalletManager
+from wallet_action.crypto_wallet_tools.\
+    crypto_wallet_info.common import WalletManager
 
 
 class WalletTokens(WalletManager):

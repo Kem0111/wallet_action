@@ -1,6 +1,6 @@
-from wallet_action.services.crypto_wallet_info.\
+from wallet_action.crypto_wallet_tools.crypto_wallet_info.\
     wallet_transactions import TokenTransactions
-from wallet_action.services.crypto_wallet_info.\
+from wallet_action.crypto_wallet_tools.crypto_wallet_info.\
     wallet_balance import WalletTokens
 from wallet_action.read_file import read_messages
 
