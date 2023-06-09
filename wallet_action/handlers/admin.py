@@ -2,8 +2,12 @@ from aiogram import types, Dispatcher
 from wallet_action.models import User
 from settings import bot
 import logging
+import os
+from dotenv import load_dotenv
 
-ADMIN_ID = 414160073
+load_dotenv()
+
+ADMIN_ID = os.getenv("ADMIN_ID")
 
 
 async def admin_post(message: types.Message):
